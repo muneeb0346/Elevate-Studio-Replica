@@ -44,3 +44,107 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// Hero Section Scroll-position Based Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const desktopBreakpoint = 992;
+
+    const desktopSettings = {
+        startPercent: 0.0,
+        endPercent: 0.7
+    };
+
+    const tabletSettings = {
+        startPercent: 0.0,
+        endPercent: 1.0
+    };
+
+    const animationContainer = document.querySelector('.div-block');
+
+    if (!animationContainer) {
+        console.error("Animation container (.div-block) not found.");
+        return;
+    }
+
+    const elevateImage = document.getElementById('elevate');
+    const studioImage = document.getElementById('studio');
+
+    if (!elevateImage || !studioImage) {
+        console.error("Animation elements not found inside .div-block.");
+        return;
+    }
+
+    let currentSettings;
+    let dynamicPixelSettings = { startScroll: 0, endScroll: 0 };
+
+    let targetElevateX = 0;
+    let currentElevateX = 0;
+    let targetStudioX = 0;
+    let currentStudioX = 0;
+    const smoothingFactor = 0.2;
+
+    function calculatePixelValues() {
+        const containerHeight = animationContainer.offsetHeight;
+
+        dynamicPixelSettings.startScroll = containerHeight * currentSettings.startPercent;
+        dynamicPixelSettings.endScroll = containerHeight * currentSettings.endPercent;
+    }
+
+    function updateTargetValues() {
+        const currentScroll = window.scrollY;
+        const animationRange = dynamicPixelSettings.endScroll - dynamicPixelSettings.startScroll;
+
+        if (animationRange <= 0) return;
+
+        let scrollProgress = (currentScroll - dynamicPixelSettings.startScroll) / animationRange;
+        scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+
+        targetElevateX = -100 * scrollProgress;
+        targetStudioX = 100 * scrollProgress;
+    }
+
+    function checkBreakpoint() {
+        if (window.innerWidth >= desktopBreakpoint) {
+            currentSettings = desktopSettings;
+        } else {
+            currentSettings = tabletSettings;
+        }
+        calculatePixelValues();
+        updateTargetValues();
+    }
+
+    function smoothAnimationLoop() {
+        let deltaElevate = targetElevateX - currentElevateX;
+        let deltaStudio = targetStudioX - currentStudioX;
+
+        currentElevateX += deltaElevate * smoothingFactor;
+        currentStudioX += deltaStudio * smoothingFactor;
+
+        if (Math.abs(deltaElevate) < 0.01) currentElevateX = targetElevateX;
+        if (Math.abs(deltaStudio) < 0.01) currentStudioX = targetStudioX;
+
+        elevateImage.style.transform = `translateX(${currentElevateX}%)`;
+        studioImage.style.transform = `translateX(${currentStudioX}%)`;
+
+        requestAnimationFrame(smoothAnimationLoop);
+    }
+
+    function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+            if (!inThrottle) {
+                func.apply(this, arguments);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+
+    const throttledUpdate = throttle(updateTargetValues, 16);
+
+    window.addEventListener('scroll', throttledUpdate);
+    window.addEventListener('resize', throttle(checkBreakpoint, 200));
+
+    checkBreakpoint();
+    smoothAnimationLoop();
+});

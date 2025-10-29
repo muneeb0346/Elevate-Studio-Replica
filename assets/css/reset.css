@@ -53,6 +53,7 @@ svg {
 }
 
 /* 6. Inherit fonts for form inputs and buttons */
+a,
 input,
 button,
 textarea,

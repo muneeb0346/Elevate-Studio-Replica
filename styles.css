@@ -1,0 +1,110 @@
+:root {
+    --max-width: 1440px;
+    --primary-color: #100f0f;
+    --secondary-color: #525253;
+    --primary-white: #f6f6f6;
+    --white: #ffffff;
+    --white-03: #ffffff03;
+}
+
+@font-face {
+    font-family: Suisseintl Book;
+    src: url("assets/fonts/SuisseIntl-Book.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Suisseintl Semi Bold;
+    src: url("assets/fonts/SuisseIntl-SemiBold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Suisseintl Normal;
+    src: url("assets/fonts/SuisseIntl-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    line-height: 1.2;
+    font-family: Suisseintl Normal, Arial, sans-serif;
+    background-color: var(--white);
+}
+
+.div-block {
+    grid-column-gap: 43px;
+    grid-row-gap: 43px;
+    pointer-events: auto;
+    -webkit-text-fill-color: inherit;
+    background-color: var(--white-03);
+    background-clip: border-box;
+    flex-flow: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    max-width: var(--max-width);
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px clamp(2px, 7%, 100px) 50px;
+    display: flex;
+    position: relative;
+    overflow: clip;
+}
+
+.div-block.fixed {
+    z-index: -1;
+    opacity: .05;
+    max-width: none;
+    position: fixed;
+}
+
+.div-block-30 {
+    grid-column-gap: 2vw;
+    grid-row-gap: 2vw;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 990px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    position: relative;
+}
+
+.image-13 {
+    width: 84%;
+    margin-right: 41px;
+}
+
+.div-block-31 {
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
+.div-block-31.fixed {
+    opacity: 0;
+}
+
+.text-block {
+    color: var(--primary-color);
+    text-align: left;
+    width: 550px;
+    max-width: 50%;
+    margin-top: 24px;
+    font-family: Suisseintl Book, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+em {
+    font-style: italic;
+}

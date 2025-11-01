@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
         dropdownList.style.display = 'block';
     }
 
-    // 1. Toggle dropdown on button click
     dropdownToggle.addEventListener('click', function (event) {
         event.stopPropagation();
         const currentDisplay = window.getComputedStyle(dropdownList).display;
@@ -23,21 +22,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 2. Close dropdown when clicking outside of it
     document.addEventListener('click', function (event) {
         if (!dropdown.contains(event.target)) {
             closeDropdown();
         }
     });
 
-    // 3. Close dropdown when any link or button inside is clicked
     dropdownList.addEventListener('click', function (event) {
         if (event.target.closest('a, button')) {
             closeDropdown();
         }
     });
 
-    // 4. Close dropdown on 'Escape' key press
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
             closeDropdown();
@@ -50,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const desktopBreakpoint = 992;
 
     const desktopSettings = {
-        startPercent: 0.0,
-        endPercent: 0.7
+        startPercent: 0.5,
+        endPercent: 0.85
     };
 
     const tabletSettings = {
-        startPercent: 0.0,
+        startPercent: 0.65,
         endPercent: 1.0
     };
 
@@ -81,20 +77,35 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentElevateX = 0;
     let targetStudioX = 0;
     let currentStudioX = 0;
-    const smoothingFactor = 0.2;
+    const smoothingFactor = 0.1;
 
     function calculatePixelValues() {
+        const containerTop = animationContainer.offsetTop;
         const containerHeight = animationContainer.offsetHeight;
+        const viewportHeight = window.innerHeight;
 
-        dynamicPixelSettings.startScroll = containerHeight * currentSettings.startPercent;
-        dynamicPixelSettings.endScroll = containerHeight * currentSettings.endPercent;
+        const journeyStart = containerTop - viewportHeight;
+        const journeyEnd = containerTop + containerHeight;
+        const totalJourney = journeyEnd - journeyStart;
+
+        dynamicPixelSettings.startScroll = journeyStart + (totalJourney * currentSettings.startPercent);
+        dynamicPixelSettings.endScroll = journeyStart + (totalJourney * currentSettings.endPercent);
     }
 
     function updateTargetValues() {
         const currentScroll = window.scrollY;
         const animationRange = dynamicPixelSettings.endScroll - dynamicPixelSettings.startScroll;
 
-        if (animationRange <= 0) return;
+        if (animationRange <= 0) {
+            if (currentScroll < dynamicPixelSettings.startScroll) {
+                targetElevateX = 0;
+                targetStudioX = 0;
+            } else if (currentScroll > dynamicPixelSettings.endScroll) {
+                targetElevateX = -100;
+                targetStudioX = 100;
+            }
+            return;
+        }
 
         let scrollProgress = (currentScroll - dynamicPixelSettings.startScroll) / animationRange;
         scrollProgress = Math.max(0, Math.min(1, scrollProgress));
@@ -141,9 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const throttledUpdate = throttle(updateTargetValues, 16);
+    const throttledResize = throttle(checkBreakpoint, 200);
 
     window.addEventListener('scroll', throttledUpdate);
-    window.addEventListener('resize', throttle(checkBreakpoint, 200));
+    window.addEventListener('resize', throttledResize);
 
     checkBreakpoint();
     smoothAnimationLoop();

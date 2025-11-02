@@ -246,3 +246,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Image Grid Interaction Enhancements
+document.addEventListener('DOMContentLoaded', function () {
+    const scrollContainer = document.querySelector('.images-carousal');
+    const scrollContent = document.querySelector('.div-block-11');
+
+    if (!scrollContainer || !scrollContent) return;
+
+    let isPaused = false;
+    let rafId = null;
+    let isJumping = false;
+    let halfwayPoint;
+    const scrollStep = 1;
+
+    function setDimensions() {
+        halfwayPoint = scrollContent.scrollWidth / 2;
+    }
+
+    setDimensions();
+    scrollContainer.scrollLeft = 0;
+
+    function scrollLoop() {
+        if (!isPaused) {
+            scrollContainer.scrollLeft += scrollStep;
+        }
+        rafId = requestAnimationFrame(scrollLoop);
+    }
+
+    scrollContainer.addEventListener('scroll', () => {
+        if (isJumping) {
+            isJumping = false;
+            return;
+        }
+
+        if (scrollContainer.scrollLeft >= halfwayPoint) {
+            isJumping = true;
+            scrollContainer.scrollLeft = 0;
+        }
+        else if (scrollContainer.scrollLeft <= 0) {
+            isJumping = true;
+            scrollContainer.scrollLeft = halfwayPoint;
+        }
+    });
+
+    scrollContainer.addEventListener('mouseenter', () => {
+        isPaused = true;
+    });
+    scrollContainer.addEventListener('mouseleave', () => {
+        isPaused = false;
+    });
+    scrollContainer.addEventListener('touchstart', () => {
+        isPaused = true;
+    }, { passive: true });
+    scrollContainer.addEventListener('touchend', () => {
+        isPaused = false;
+    });
+
+    window.addEventListener('resize', setDimensions);
+    scrollLoop();
+});

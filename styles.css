@@ -411,7 +411,6 @@ em {
     align-items: stretch;
     width: 60%;
     display: flex;
-    overflow: clip;
 }
 
 .div-block-22 {
@@ -492,6 +491,46 @@ em {
     position: absolute;
     left: 0;
     top: 0;
+}
+
+.images-carousal {
+    scrollbar-width: none;
+    flex-flow: row;
+    width: var(--sec-width);
+    max-width: var(--sec-max-width);
+    margin-top: 137px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    overflow: auto;
+}
+
+.div-block-11 {
+    grid-column-gap: 14px;
+    grid-row-gap: 14px;
+    aspect-ratio: auto;
+    object-fit: cover;
+    flex-flow: row;
+    flex: none;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 14px;
+    transition: opacity .2s;
+    display: flex;
+    position: static;
+}
+
+.image1 {
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 20px;
+    flex-shrink: 0;
+    width: 500px;
+    height: 700px;
+    transition: opacity .2s;
 }
 
 /* Tablet */
@@ -613,6 +652,22 @@ em {
 
     .image-8 {
         width: 32px;
+    }
+
+    .images-carousal {
+        margin-top: 115px;
+    }
+
+    .div-block-11 {
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        height: auto;
+        padding-right: 10px;
+    }
+
+    .image1 {
+        width: 400px;
+        height: 600px;
     }
 }
 
@@ -761,6 +816,23 @@ em {
     .image-8 {
         width: 24px;
     }
+
+    .images-carousal {
+        margin-top: 43px;
+    }
+
+    .div-block-11 {
+        grid-column-gap: 8px;
+        grid-row-gap: 8px;
+        padding-right: 8px;
+    }
+
+    .image1 {
+        aspect-ratio: 3 / 2;
+        width: 400px;
+        height: 500px;
+        margin-top: 81px;
+    }
 }
 
 /* Mobile Small */
@@ -816,6 +888,19 @@ em {
     .text-block-9,
     .text-block-10 {
         font-size: 20px;
+    }
+
+    .div-block-11 {
+        margin-top: 0;
+        padding-right: 0;
+    }
+
+    .image1 {
+        width: 300px;
+        max-width: 100%;
+        height: 100%;
+        margin-top: 0;
+        margin-bottom: 42px;
     }
 }
 

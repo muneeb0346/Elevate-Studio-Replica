@@ -181,3 +181,68 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(element);
     });
 });
+
+// Service Section Accordion Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const accordionButtons = document.querySelectorAll('.div-block-9[aria-controls]');
+
+    function closeAccordion(button, item, panel) {
+        button.setAttribute('aria-expanded', 'false');
+        item.classList.remove('is-open');
+
+        panel.style.height = panel.scrollHeight + 'px';
+
+        requestAnimationFrame(() => {
+            panel.style.height = '0px';
+        });
+
+        panel.addEventListener('transitionend', () => {
+            panel.style.display = 'none';
+        }, { once: true });
+    }
+
+    function openAccordion(button, item, panel) {
+        button.setAttribute('aria-expanded', 'true');
+        item.classList.add('is-open');
+
+        panel.style.display = 'grid';
+
+        requestAnimationFrame(() => {
+            panel.style.height = panel.scrollHeight + 'px';
+        });
+
+        panel.addEventListener('transitionend', () => {
+            panel.style.height = 'auto';
+        }, { once: true });
+    }
+
+    accordionButtons.forEach(clickedButton => {
+        clickedButton.addEventListener('click', () => {
+
+            const clickedItem = clickedButton.closest('.div-block-22');
+            if (!clickedItem) return;
+
+            const clickedContentPanel = clickedItem.querySelector('.div-block-23');
+            if (!clickedContentPanel) return;
+
+            const isExpanded = clickedButton.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                closeAccordion(clickedButton, clickedItem, clickedContentPanel);
+
+            } else {
+                accordionButtons.forEach(otherButton => {
+                    const isOtherExpanded = otherButton.getAttribute('aria-expanded') === 'true';
+
+                    if (isOtherExpanded) {
+                        const otherItem = otherButton.closest('.div-block-22');
+                        const otherPanel = otherItem.querySelector('.div-block-23');
+                        closeAccordion(otherButton, otherItem, otherPanel);
+                    }
+                });
+
+                openAccordion(clickedButton, clickedItem, clickedContentPanel);
+            }
+        });
+    });
+});

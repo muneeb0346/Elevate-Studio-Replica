@@ -44,7 +44,16 @@ body {
     font-weight: 400;
 }
 
-.div-block {
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-section {
     grid-column-gap: 43px;
     grid-row-gap: 43px;
     pointer-events: auto;
@@ -65,7 +74,7 @@ body {
     overflow: clip;
 }
 
-.div-block.fixed {
+.hero-section.fixed {
     z-index: -1;
     opacity: .05;
     max-width: none;
@@ -73,7 +82,7 @@ body {
     top: 0;
 }
 
-.div-block-2 {
+.navbar {
     z-index: 1;
     text-align: right;
     flex-flow: row;
@@ -326,10 +335,7 @@ em {
     font-size: 48px;
     font-weight: 400;
     line-height: 100%;
-}
-
-.text-block-5.onmobile {
-    display: none;
+    text-indent: 10ch;
 }
 
 .div-block-6 {
@@ -359,18 +365,18 @@ em {
 
 /* Tablet */
 @media screen and (max-width: 991px) {
-    .div-block {
+    .hero-section {
         grid-column-gap: 30px;
         grid-row-gap: 30px;
         min-height: 0;
         padding: 59px 5%;
     }
 
-    .div-block.fixed {
+    .hero-section.fixed {
         margin-top: 88px;
     }
 
-    .div-block-2 {
+    .navbar {
         width: 90%;
         margin-bottom: 0;
         padding-top: 36px;
@@ -411,7 +417,7 @@ em {
 
     .div-block-29 {
         grid-column-gap: 122px;
-        grid-row-gap: 182px;
+        grid-row-gap: 100px;
     }
 
     .jumbo-text {
@@ -438,7 +444,7 @@ em {
 
 /* Mobile */
 @media screen and (max-width: 767px) {
-    .div-block {
+    .hero-section {
         grid-column-gap: 70px;
         grid-row-gap: 70px;
         justify-content: center;
@@ -446,11 +452,11 @@ em {
         padding: 120px 2.5% 0;
     }
 
-    .div-block.fixed {
+    .hero-section.fixed {
         margin-top: 56px;
     }
 
-    .div-block-2 {
+    .navbar {
         width: 95%;
         padding-top: 16px;
         padding-bottom: 0;
@@ -504,7 +510,7 @@ em {
 
     .div-block-29 {
         grid-column-gap: 160px;
-        grid-row-gap: 220px;
+        grid-row-gap: 144px;
         width: 95%;
         margin-left: auto;
         margin-right: auto;
@@ -517,12 +523,8 @@ em {
 
     .text-block-5 {
         font-size: 20px;
-        display: none;
-    }
-
-    .text-block-5.onmobile {
         line-height: 120%;
-        display: block;
+        text-indent: 0ch;
     }
 
     .div-block-6.onmobile {

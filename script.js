@@ -6,10 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function closeDropdown() {
         dropdownList.style.display = 'none';
+        dropdownToggle.setAttribute('aria-expanded', 'false');
     }
 
     function openDropdown() {
         dropdownList.style.display = 'block';
+        dropdownToggle.setAttribute('aria-expanded', 'true');
     }
 
     dropdownToggle.addEventListener('click', function (event) {
@@ -55,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
         endPercent: 1.0
     };
 
-    const animationContainer = document.querySelector('.div-block');
+    const animationContainer = document.querySelector('.hero-section');
 
     if (!animationContainer) {
-        console.error("Animation container (.div-block) not found.");
+        console.error("Animation container (.hero-section) not found.");
         return;
     }
 
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const studioImage = document.getElementById('studio');
 
     if (!elevateImage || !studioImage) {
-        console.error("Animation elements not found inside .div-block.");
+        console.error("Animation elements not found inside .hero-section.");
         return;
     }
 

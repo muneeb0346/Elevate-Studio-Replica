@@ -63,6 +63,8 @@ textarea,
 select {
     font: inherit;
     color: inherit;
+    border: none;
+    background: none;
 }
 
 a,

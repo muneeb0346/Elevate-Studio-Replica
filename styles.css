@@ -9,6 +9,7 @@
     --white: #ffffff;
     --white-03: #ffffff03;
     --shadow-1: 0 2px 5px #0000001a;
+    --outQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 @font-face {
@@ -356,6 +357,7 @@ em {
     transform: rotate(-45deg);
 }
 
+/* Tablet */
 @media screen and (max-width: 991px) {
     .div-block {
         grid-column-gap: 30px;
@@ -434,6 +436,7 @@ em {
     }
 }
 
+/* Mobile */
 @media screen and (max-width: 767px) {
     .div-block {
         grid-column-gap: 70px;
@@ -544,6 +547,7 @@ em {
     }
 }
 
+/* Mobile Small */
 @media screen and (max-width: 479px) {
     .image-11 {
         margin-top: -15px;
@@ -591,6 +595,7 @@ em {
     }
 }
 
+/* Animations */
 @keyframes loop-left {
     from {
         transform: translateX(0%);
@@ -609,4 +614,79 @@ em {
     to {
         transform: translateX(100%);
     }
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(100px);
+    will-change: opacity, transform;
+    transition: opacity 1000ms var(--outQuart),
+        transform 1000ms var(--outQuart);
+}
+
+.slide-in-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    will-change: opacity, transform;
+    transition: opacity 1000ms var(--outQuart),
+        transform 1000ms var(--outQuart);
+}
+
+.slide-in-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-down {
+    opacity: 0;
+    transform: translateY(100px);
+    will-change: opacity, transform;
+    transition: opacity 1000ms var(--outQuart),
+        transform 1000ms var(--outQuart);
+}
+
+.slide-in-down.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.grow-in {
+    opacity: 0;
+    transform: scale(0.75);
+    will-change: opacity, transform;
+    transition: opacity 1000ms var(--outQuart),
+        transform 1000ms var(--outQuart);
+}
+
+.grow-in.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.grow-big-in {
+    opacity: 0;
+    transform: scale(0);
+    will-change: opacity, transform;
+    transition: opacity 1000ms var(--outQuart),
+        transform 1000ms var(--outQuart);
+}
+
+.grow-big-in.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fade-in {
+    opacity: 0;
+    will-change: opacity;
+    transition: opacity 1000ms var(--outQuart);
+}
+
+.fade-in.is-visible {
+    opacity: 1;
 }

@@ -160,3 +160,22 @@ document.addEventListener('DOMContentLoaded', () => {
     checkBreakpoint();
     smoothAnimationLoop();
 });
+
+// Animations on Scroll Handler
+document.addEventListener('DOMContentLoaded', () => {
+    const elementsToAnimate = document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-down, .grow-in, .grow-big-in, .fade-in');
+    console.log(elementsToAnimate);
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
+    });
+});

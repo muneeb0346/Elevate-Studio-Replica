@@ -212,6 +212,10 @@ em {
     font-style: italic;
 }
 
+strong {
+    font-weight: bold;
+}
+
 .we-love-everything-section {
     display: flex;
     flex-direction: column;
@@ -534,8 +538,7 @@ em {
 }
 
 .what-makes-us-different-section {
-    grid-column-gap: 190px;
-    grid-row-gap: 190px;
+    gap: 100px;
     flex-flow: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -549,13 +552,12 @@ em {
 
 .div-block-13 {
     grid-column-gap: 24px;
-    grid-row-gap: 148px;
+    grid-row-gap: 48px;
     grid-template-rows: auto auto;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
     width: 100%;
-    margin-top: -93px;
     padding-top: 0;
     display: grid;
 }
@@ -582,6 +584,101 @@ em {
     color: var(--secondary-color);
     font-size: 20px;
     line-height: 120%;
+}
+
+.footer {
+    gap: 100px;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: var(--sec-width);
+    max-width: var(--sec-max-width);
+    margin-top: 27px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 159px;
+    display: flex;
+}
+
+.div-block-16 {
+    grid-column-gap: 158px;
+    grid-row-gap: 158px;
+    flex-flow: column;
+    width: 100%;
+    display: flex;
+}
+
+.div-block-17 {
+    justify-content: space-between;
+    align-items: start;
+    display: flex;
+}
+
+.text-block-13 {
+    color: var(--primary-color);
+    letter-spacing: -2.56px;
+    flex: none;
+    font-family: Suisseintl Semi Bold, Arial, sans-serif;
+    font-size: clamp(2px, 8vw, 128px);
+    font-weight: 600;
+    line-height: 92%;
+}
+
+.div-block-18 {
+    grid-column-gap: 36px;
+    grid-row-gap: 36px;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    display: flex;
+}
+
+.div-block-19 {
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+    flex-flow: column;
+    display: flex;
+}
+
+.text-block-14 {
+    color: var(--primary-color);
+    letter-spacing: .64px;
+    font-family: Suisseintl Semi Bold, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 90%;
+    text-decoration: none;
+}
+
+.text-block-15 {
+    color: var(--secondary-color);
+    font-size: 18px;
+    line-height: 90%;
+    text-decoration: none;
+}
+
+.div-block-20 {
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}
+
+.div-block-21 {
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: flex;
+}
+
+.text-block-16 {
+    color: var(--primary-color);
+    letter-spacing: .42px;
+    text-transform: uppercase;
+    text-decoration: none;
 }
 
 /* Tablet */
@@ -722,8 +819,7 @@ em {
     }
 
     .what-makes-us-different-section {
-        grid-column-gap: 92px;
-        grid-row-gap: 92px;
+        gap: 65px;
         margin-top: 115px;
     }
 
@@ -732,7 +828,6 @@ em {
         grid-row-gap: 35px;
         grid-template-rows: auto auto auto;
         grid-template-columns: 1fr 1fr;
-        margin-top: -18px;
         margin-bottom: 27px;
     }
 
@@ -748,6 +843,53 @@ em {
     .text-block-12 {
         font-size: 18px;
         line-height: 120%;
+    }
+
+    .footer {
+        gap: 60px;
+        margin-top: 12px;
+        padding-top: 80px;
+    }
+
+    .div-block-16 {
+        grid-column-gap: 96px;
+        grid-row-gap: 96px;
+    }
+
+    .div-block-17 {
+        grid-column-gap: 80px;
+        grid-row-gap: 80px;
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .text-block-13 {
+        font-size: 96px;
+    }
+
+    .div-block-18 {
+        grid-column-gap: 36px;
+        grid-row-gap: 36px;
+    }
+
+    .text-block-14 {
+        font-size: 28px;
+    }
+
+    .text-block-15 {
+        margin-top: 36px;
+        font-size: 18px;
+    }
+
+    .div-block-21 {
+        grid-column-gap: 64px;
+        grid-row-gap: 24px;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 25px;
     }
 }
 
@@ -915,8 +1057,6 @@ em {
     }
 
     .what-makes-us-different-section {
-        grid-column-gap: 65px;
-        grid-row-gap: 65px;
         width: 100%;
         margin-top: 148px;
     }
@@ -927,7 +1067,6 @@ em {
         grid-template-rows: auto auto auto auto auto auto;
         grid-template-columns: 1fr;
         width: var(--sec-width);
-        margin-top: 42px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -948,14 +1087,64 @@ em {
         font-size: 16px;
         line-height: 150%;
     }
+
+    .footer {
+        gap: 98px;
+        width: 100%;
+        margin-top: 0;
+        padding-top: 109px;
+    }
+
+    .div-block-16 {
+        grid-column-gap: 171px;
+        grid-row-gap: 171px;
+        width: var(--sec-width);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .div-block-17 {
+        grid-column-gap: 120px;
+        grid-row-gap: 120px;
+    }
+
+    .text-block-13 {
+        font-size: 64px;
+    }
+
+    .div-block-18 {
+        width: 80%;
+    }
+
+    .text-block-14 {
+        font-size: 32px;
+    }
+
+    .text-block-15 {
+        font-size: 20px;
+        line-height: 150%;
+    }
+
+    .div-block-20 {
+        flex-flow: wrap;
+    }
+
+    .div-block-21 {
+        grid-column-gap: 24px;
+        grid-row-gap: 24px;
+        flex-flow: column;
+        padding-top: 0;
+        padding-bottom: 24px;
+    }
+
+    .text-block-16 {
+        text-align: center;
+        width: 100%;
+    }
 }
 
 /* Mobile Small */
 @media screen and (max-width: 479px) {
-    .image-11 {
-        margin-top: -15px;
-    }
-
     .image-13 {
         margin-right: 11px;
     }
@@ -971,10 +1160,6 @@ em {
         text-decoration: none;
         display: block;
         overflow: visible;
-    }
-
-    .text-block-2 {
-        margin-top: -15px;
     }
 
     .jumbo-text-wrapper {
@@ -1031,6 +1216,48 @@ em {
     .text-block-11,
     .text-block-12 {
         font-size: 20px;
+    }
+
+    .footer {
+        margin-top: -66px;
+        margin-bottom: auto;
+    }
+
+    .div-block-16 {
+        gap: 0px;
+        margin-top: 96px;
+    }
+
+    .div-block-17 {
+        margin-top: -36px;
+    }
+
+    .text-block-13 {
+        font-size: 60px;
+    }
+
+    .div-block-18 {
+        margin-top: -63px;
+    }
+
+    .text-block-14 {
+        font-size: 16px;
+    }
+
+    .text-block-15 {
+        margin-top: 15px;
+        font-size: 16px;
+    }
+
+    .div-block-21 {
+        margin-top: 36px;
+        margin-bottom: 63px;
+        padding-top: 52px;
+        position: static;
+    }
+
+    .text-block-16 {
+        text-align: left;
     }
 }
 

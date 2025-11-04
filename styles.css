@@ -619,7 +619,7 @@ strong {
     letter-spacing: -2.56px;
     flex: none;
     font-family: Suisseintl Semi Bold, Arial, sans-serif;
-    font-size: clamp(2px, 8vw, 128px);
+    font-size: clamp(2px, 7.8vw, 128px);
     font-weight: 600;
     line-height: 92%;
 }
@@ -679,6 +679,23 @@ strong {
     letter-spacing: .42px;
     text-transform: uppercase;
     text-decoration: none;
+}
+
+.div-block-33 {
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    display: flex;
+}
+
+.image-16 {
+    aspect-ratio: auto;
+    box-shadow: none;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    flex: 0 auto;
+    height: auto;
+    position: relative;
 }
 
 /* Tablet */
@@ -1219,6 +1236,7 @@ strong {
     }
 
     .footer {
+        gap: 50px;
         margin-top: -66px;
         margin-bottom: auto;
     }

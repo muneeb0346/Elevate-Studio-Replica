@@ -69,6 +69,7 @@ select {
     color: inherit;
     border: none;
     background: none;
+    text-decoration: none;
 }
 
 a,
